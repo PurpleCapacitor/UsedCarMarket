@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Apollo, gql} from 'apollo-angular';
+import {Subscription} from 'rxjs';
+import {AuthenticationService} from './services/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -10,12 +12,10 @@ export class AppComponent implements OnInit {
   title = 'ucmfront';
   private book;
 
-
-
   constructor(private apollo: Apollo) {}
 
   ngOnInit(): void {
-      this.apollo.watchQuery({
+      /*this.apollo.watchQuery({
         query: gql`
         query testerino{
          ads {
@@ -29,6 +29,6 @@ export class AppComponent implements OnInit {
       })
         .valueChanges.subscribe(result => {
          this.book = result.data;
-      });
+      });*/
   }
 }
