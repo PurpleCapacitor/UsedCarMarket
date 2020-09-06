@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {Apollo, gql} from 'apollo-angular';
-import {Subscription} from 'rxjs';
 import {AuthenticationService} from './services/authentication.service';
 
 @Component({
@@ -10,25 +9,19 @@ import {AuthenticationService} from './services/authentication.service';
 })
 export class AppComponent implements OnInit {
   title = 'ucmfront';
-  private book;
+  private user = null;
+  public userLoggedIn = false;
 
-  constructor(private apollo: Apollo) {}
+  constructor(private apollo: Apollo,
+              private authenticationService: AuthenticationService) {}
 
   ngOnInit(): void {
-      /*this.apollo.watchQuery({
-        query: gql`
-        query testerino{
-         ads {
-          description
-          user {
-            username
-          }
-         }
-        }
-        `,
-      })
-        .valueChanges.subscribe(result => {
-         this.book = result.data;
-      });*/
+    this.authenticationService.login().subscribe(loggedIn => this.userLoggedIn = loggedIn);
+  }
+
+  logOut() {
+    localStorage.removeItem("currentUser");
+    this.authenticationService.login().subscribe(loggedIn => this.userLoggedIn = loggedIn);
+
   }
 }

@@ -17,9 +17,9 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.subscription = this.authenticationService.getLoggedIn().subscribe(value => {
+    /*this.subscription = this.authenticationService.getLoggedIn().subscribe(value => {
       this.userLoggedIn = value;
-    });
+    });*/
   }
 
 }

@@ -2,19 +2,21 @@
 <div class="container h-100">
   <div class="row h-100 justify-content-center">
     <div class="col-10 col-md-8 col-lg-6">
-      <form #f="ngForm" (ngSubmit)="login(f.value)">
+      <form #f="ngForm" (ngSubmit)="register(f.value)">
         <div class="container" style="text-align: center">
-          <h4>Members' area</h4>
+          <h4>Registration</h4>
         </div>
         <div class="form-group">
           <input ngModel name="username" type="text" class="form-control mb-2 form-control-sm" placeholder="Username">
         </div>
         <div class="form-group">
-        <input ngModel name="password" type="password" class="form-control mb-2 form-control-sm" placeholder="Password">
+          <input ngModel name="password" type="password" class="form-control mb-2 form-control-sm" placeholder="Password">
         </div>
         <div class="form-group">
-          <button type="submit" class="btn btn-dark">Login</button>
-          Not a member? <a routerLink="/registration">Sign up</a>
+          <input ngModel name="repeatedPassword" type="password" class="form-control mb-2 form-control-sm" placeholder="Repeat password">
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-dark">Register</button>
         </div>
       </form>
     </div>
