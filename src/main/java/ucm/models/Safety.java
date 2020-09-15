@@ -1,5 +1,7 @@
 package ucm.models;
 
+import ucm.inputs.SafetyInput;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -21,6 +23,14 @@ public class Safety {
     private Set<Ad> ads = new HashSet<>();
 
     public Safety() { }
+
+    public Safety(SafetyInput input) {
+        this.ABS = input.isABS();
+        this.ESP = input.isESP();
+        this.airbags = input.isCentralLocking();
+        this.centralLocking = input.isCentralLocking();
+        this.childLock = input.isChildLock();
+    }
 
     public Long getId() {
         return id;

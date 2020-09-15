@@ -1,5 +1,7 @@
 package ucm.models;
 
+import ucm.inputs.AdsInput;
+
 import javax.persistence.*;
 
 @Entity
@@ -34,6 +36,12 @@ public class Ad {
 
     public Ad() {
 
+    }
+
+    public Ad(AdsInput adsInput) {
+        this.description = adsInput.getDescription();
+        this.address = adsInput.getAddress();
+        this.phone = adsInput.getPhone();
     }
 
     public Long getId() {

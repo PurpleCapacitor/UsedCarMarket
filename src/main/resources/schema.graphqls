@@ -11,6 +11,13 @@ type Query {
 type Mutation {
     userLogin(username: String!, password: String!): User
     userRegistration(username: String!, password: String!, repeatedPassword: String!): String
+    placeAd(input: AdsInput,
+            carModel: CarModelInput,
+            user: UserInput,
+            extras: ExtrasInput,
+            condition: ConditionInput,
+            characteristics: CharacteristicsInput
+            safety: SafetyInput): Ads
 }
 
 type Ads {
@@ -20,6 +27,10 @@ type Ads {
     phone: String
     carModel: CarModel
     user: User
+    extras: Extras
+    condition: Condition
+    characteristics: Characteristics
+    safety: Safety
 }
 
 type User {
@@ -38,4 +49,112 @@ type CarModel {
     displacement: Int
     hp: Int
 }
+
+type Extras {
+    id: Int!
+    cruiseControl: Boolean
+    electricalMirrors: Boolean
+    electricalSeats: Boolean
+    electricalWindows: Boolean
+    multifunctionalSteeringWheel: Boolean
+    bluetooth: Boolean
+    ledHeadlights: Boolean
+    heatedSeats: Boolean
+}
+
+type Safety {
+    id: Int!
+    ABS: Boolean
+    ESP: Boolean
+    airbags: Boolean
+    centralLocking: Boolean
+    childLock: Boolean
+}
+
+type Characteristics {
+    id: Int!
+    emissionClass: String
+    ac: Boolean
+    drivetrain: String
+    color: String
+    registeredUntil: String
+}
+
+type Condition {
+    id: Int!
+    firstOwner: Boolean
+    serviceHistory: Boolean
+    spareKey: Boolean
+    taxi: Boolean
+}
+
+input AdsInput {
+    description: String
+    address: String
+    phone: String
+}
+
+input CarModelInput {
+    make: String
+    model: String
+    year: String
+    kilometers: Int
+    displacement: Int
+    hp: Int
+}
+
+input UserInput {
+    username: String
+    password: String
+    type: String
+}
+
+input ExtrasInput {
+    cruiseControl: Boolean
+    electricalMirrors: Boolean
+    electricalSeats: Boolean
+    electricalWindows: Boolean
+    multifunctionalSteeringWheel: Boolean
+    bluetooth: Boolean
+    ledHeadlights: Boolean
+    heatedSeats: Boolean
+}
+
+input ConditionInput {
+    firstOwner: Boolean
+    serviceHistory: Boolean
+    spareKey: Boolean
+    taxi: Boolean
+}
+
+input CharacteristicsInput {
+    emissionClass: String
+    ac: Boolean
+    drivetrain: String
+    color: String
+    registeredUntil: String
+}
+
+input SafetyInput {
+    ABS: Boolean
+    ESP: Boolean
+    airbags: Boolean
+    centralLocking: Boolean
+    childLock: Boolean
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

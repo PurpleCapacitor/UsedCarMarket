@@ -1,6 +1,7 @@
 package ucm.models;
 
 import org.hibernate.boot.archive.scan.spi.PackageInfoArchiveEntryHandler;
+import ucm.inputs.CharacteristicsInput;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -25,6 +26,14 @@ public class Characteristics {
 
     public Characteristics() {
 
+    }
+
+    public Characteristics(CharacteristicsInput input) {
+        this.emissionClass = input.getEmissionClass();
+        this.ac = input.isAc();
+        this.drivetrain = Drivetrain.valueOf(input.getDrivetrain());
+        this.color = input.getColor();
+        this.registeredUntil = LocalDate.parse(input.getRegisteredUntil());
     }
 
     public Long getId() {

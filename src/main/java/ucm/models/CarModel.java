@@ -1,5 +1,8 @@
 package ucm.models;
 
+import org.apache.tomcat.jni.Local;
+import ucm.inputs.CarModelInput;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -21,6 +24,15 @@ public class CarModel {
     private Set<Ad> ads = new HashSet<>();
 
     public CarModel() {
+    }
+
+    public CarModel(CarModelInput input) {
+        this.make = input.getMake();
+        this.model = input.getModel();
+        this.year = LocalDate.parse(input.getYear());
+        this.kilometers = input.getKilometers();
+        this.displacement = input.getDisplacement();
+        this.hp = input.getHp();
     }
 
     public Long getId() {

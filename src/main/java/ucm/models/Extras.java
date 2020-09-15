@@ -1,5 +1,7 @@
 package ucm.models;
 
+import ucm.inputs.ExtrasInput;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -24,6 +26,17 @@ public class Extras {
     private Set<Ad> ads = new HashSet<>();
 
     public Extras() {
+    }
+
+    public Extras(ExtrasInput input) {
+        this.cruiseControl = input.isCruiseControl();
+        this.electricalMirrors = input.isElectricalMirrors();
+        this.electricalSeats = input.isElectricalSeats();
+        this.electricalWindows = input.isElectricalWindows();
+        this.multifunctionalSteeringWheel = input.isMultifunctionalSteeringWheel();
+        this.bluetooth = input.isBluetooth();
+        this.ledHeadlights = input.isLedHeadlights();
+        this.heatedSeats = input.isHeatedSeats();
     }
 
     public Long getId() {

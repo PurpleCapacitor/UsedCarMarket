@@ -1,5 +1,7 @@
 package ucm.models;
 
+import ucm.inputs.UserInput;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -20,6 +22,10 @@ public class User {
     private Set<Ad> ads = new HashSet<>();
 
     public User() {
+    }
+
+    public User(UserInput input) {
+        this.username = input.getUsername();
     }
 
     public User(String username, String password) {

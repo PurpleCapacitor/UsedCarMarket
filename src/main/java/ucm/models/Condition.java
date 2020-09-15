@@ -1,5 +1,7 @@
 package ucm.models;
 
+import ucm.inputs.ConditionInput;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -20,6 +22,13 @@ public class Condition {
     private Set<Ad> ads = new HashSet<>();
 
     public Condition() {
+    }
+
+    public Condition(ConditionInput input) {
+        this.firstOwner = input.isFirstOwner();
+        this.serviceHistory = input.isServiceHistory();
+        this.spareKey = input.isSpareKey();
+        this.taxi = input.isTaxi();
     }
 
     public Long getId() {

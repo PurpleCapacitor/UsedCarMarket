@@ -10,4 +10,6 @@ public class UsedCarMarketApplication {
         SpringApplication.run(UsedCarMarketApplication.class, args);
     }
 
+
+
 }
