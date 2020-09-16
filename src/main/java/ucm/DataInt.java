@@ -37,7 +37,7 @@ public class DataInt implements CommandLineRunner {
             CarModel carModel = new CarModel();
             carModel.setMake("bmw");
             carModel.setModel("5er");
-            carModel.setYear(LocalDate.parse("2004-01-01"));
+            carModel.setYear(2004);
             carModel.setKilometers(100);
             carModel.setDisplacement(2171);
             carModel.setHp(170);

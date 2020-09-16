@@ -77,7 +77,8 @@ public class MutationResolver implements GraphQLMutationResolver {
         characteristics.getAds().add(newAd);
         safety.getAds().add(newAd);
         adsRepository.save(newAd);
-        return null;
+        return newAd;
+
     }
 
     /*public String uploadImage(Part image, DataFetchingEnvironment environment) throws IOException {

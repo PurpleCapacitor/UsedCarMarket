@@ -1,13 +1,10 @@
 package ucm.models;
 
-import org.hibernate.boot.archive.scan.spi.PackageInfoArchiveEntryHandler;
 import ucm.inputs.CharacteristicsInput;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity

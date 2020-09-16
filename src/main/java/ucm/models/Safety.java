@@ -27,7 +27,7 @@ public class Safety {
     public Safety(SafetyInput input) {
         this.ABS = input.isABS();
         this.ESP = input.isESP();
-        this.airbags = input.isCentralLocking();
+        this.airbags = input.isAirbags();
         this.centralLocking = input.isCentralLocking();
         this.childLock = input.isChildLock();
     }

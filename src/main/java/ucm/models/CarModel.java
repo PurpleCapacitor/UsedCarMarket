@@ -5,6 +5,7 @@ import ucm.inputs.CarModelInput;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.Year;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,7 +17,7 @@ public class CarModel {
     private Long id;
     private String make;
     private String model;
-    private LocalDate year;
+    private int year;
     private int kilometers;
     private int displacement;
     private int hp;
@@ -29,7 +30,7 @@ public class CarModel {
     public CarModel(CarModelInput input) {
         this.make = input.getMake();
         this.model = input.getModel();
-        this.year = LocalDate.parse(input.getYear());
+        this.year = input.getYear();
         this.kilometers = input.getKilometers();
         this.displacement = input.getDisplacement();
         this.hp = input.getHp();
@@ -59,11 +60,11 @@ public class CarModel {
         this.model = model;
     }
 
-    public LocalDate getYear() {
+    public int getYear() {
         return year;
     }
 
-    public void setYear(LocalDate year) {
+    public void setYear(int year) {
         this.year = year;
     }
 
