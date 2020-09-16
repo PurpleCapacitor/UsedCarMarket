@@ -1,0 +1,182 @@
+<br xmlns="http://www.w3.org/1999/html">
+<div class="container">
+  <div class="container" style="text-align: center">
+    <h4>Place an ad</h4>
+  </div>
+  <form #general="ngForm" (ngSubmit)="placeAd(general.value)">
+  <div class="row">
+    <div class="col-sm">
+      <div class="container" style="text-align: center">
+        <p>Car model</p>
+      </div>
+      <div class="form-group">
+        <input ngModel name="make" type="text" class="form-control mb-2 form-control-sm" placeholder="Make">
+      </div>
+      <div class="form-group">
+        <input ngModel name="model" type="text" class="form-control mb-2 form-control-sm" placeholder="Model">
+      </div>
+      <div class="form-group">
+        <input ngModel name="year" type="date" class="form-control mb-2 form-control-sm">
+      </div>
+      <div class="form-group">
+        <input ngModel name="km" type="text" class="form-control mb-2 form-control-sm" placeholder="Kilometers">
+      </div>
+      <div class="form-group">
+        <input ngModel name="displacement" type="text" class="form-control mb-2 form-control-sm" placeholder="Displacement">
+      </div>
+      <div class="form-group">
+        <input ngModel name="hp" type="text" class="form-control mb-2 form-control-sm" placeholder="Horsepower">
+      </div>
+    </div>
+    <div class="col-sm">
+        <div class="container" style="text-align: center">
+          <p>Characteristics</p>
+        </div>
+        <div class="form-group">
+          <input ngModel name="emissionClass" type="text" class="form-control mb-2 form-control-sm" placeholder="Emission class">
+        </div>
+        <div class="form-group">
+          <input ngModel name="color" type="text" class="form-control mb-2 form-control-sm" placeholder="Color">
+        </div>
+        <div class="form-group">
+          <label for="regUntil">Registered until:</label>
+          <input ngModel name="registeredUntil" id="regUntil" type="date" class="form-control mb-2 form-control-sm">
+        </div>
+        <div>
+          <select class="form-group" ngModel name="drivetrain" style="width: 100%">
+            <option value="FWD">FWD</option>
+            <option value="RWD">RWD</option>
+            <option value="ALL4">4x4</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <input ngModel name="ac" id="ac" type="checkbox">
+          <label for="ac" class="form-check-label" style="margin-left: 1%">AC</label>
+        </div>
+    </div>
+    <div class="col-sm">
+        <div class="container" style="text-align: center">
+          <p>General ad info</p>
+        </div>
+        <div class="form-group">
+          <input ngModel name="address" type="text" class="form-control mb-2 form-control-sm" placeholder="Seller address">
+        </div>
+        <div class="form-group">
+          <input ngModel name="phone" type="number" class="form-control mb-2 form-control-sm" placeholder="Seller phone">
+        </div>
+        <div class="form-group">
+          <input ngModel name="description" type="text" class="form-control mb-2 form-control-sm" placeholder="Ad description">
+        </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm">
+      <div class="container" style="text-align: center">
+        <p>Extras</p>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input ngModel name="cruiseControl" type="checkbox" class="form-check-input">Cruise control
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input ngModel name="electricalMirrors" type="checkbox" class="form-check-input">Electrical mirrors
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input ngModel name="electricalSeats" type="checkbox" class="form-check-input">Electrical seats
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input ngModel name="electricalWindows" type="checkbox" class="form-check-input">Electrical windows
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input ngModel name="multifunctionalSteeringWheel" type="checkbox" class="form-check-input">MF steering wheel
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input ngModel name="bluetooth" type="checkbox" class="form-check-input">Bluetooth
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input ngModel name="ledHeadlights" type="checkbox" class="form-check-input">LED headlights
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input ngModel name="heatedSeats" type="checkbox" class="form-check-input">Heated seats
+        </label>
+      </div>
+    </div>
+    <div class="col-sm">
+      <div class="container" style="text-align: center">
+        <p>Condition</p>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input ngModel name="firstOwner" type="checkbox" class="form-check-input">First owner
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input ngModel name="serviceHistory" type="checkbox" class="form-check-input">Service history
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input ngModel name="spareKey" type="checkbox" class="form-check-input">Spare key
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input ngModel name="taxi" type="checkbox" class="form-check-input">Taxi
+        </label>
+      </div>
+    </div>
+    <div class="col-sm">
+      <div class="container" style="text-align: center">
+        <p>Safety</p>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input ngModel name="abs" type="checkbox" class="form-check-input">ABS
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input ngModel name="ESP" type="checkbox" class="form-check-input">ESP
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input ngModel name="airbags" type="checkbox" class="form-check-input">Airbags
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input ngModel name="centralLocking" type="checkbox" class="form-check-input">Central locking
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input ngModel name="childLock" type="checkbox" class="form-check-input">Child lock
+        </label>
+      </div>
+    </div>
+  </div>
+    <br>
+    <div class="row">
+      <div class="form-group">
+        <button type="submit" class="btn btn-dark">Submit</button>
+      </div>
+    </div>
+
+  </form>
+</div>
