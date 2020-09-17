@@ -6,6 +6,7 @@ schema {
 type Query {
     ads: [Ads]
     ad(id: Int!): Ads
+    userAds(username: String!): [Ads]
 }
 
 type Mutation {
@@ -18,6 +19,8 @@ type Mutation {
             condition: ConditionInput,
             characteristics: CharacteristicsInput
             safety: SafetyInput): Ads
+    deleteAd(id: Int!): Int
+
 }
 
 type Ads {
@@ -25,6 +28,7 @@ type Ads {
     description: String
     address: String
     phone: String
+    price: Int
     carModel: CarModel
     user: User
     extras: Extras
@@ -92,12 +96,13 @@ input AdsInput {
     description: String
     address: String
     phone: String
+    price: Int
 }
 
 input CarModelInput {
     make: String
     model: String
-    year: Int
+    year: String
     kilometers: Int
     displacement: Int
     hp: Int

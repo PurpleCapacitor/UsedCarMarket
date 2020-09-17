@@ -14,6 +14,7 @@ public class Ad {
     private String description;
     private String address;
     private String phone;
+    private int price;
 
     @ManyToOne
     @JoinColumn(name = "car_model_id")
@@ -42,6 +43,7 @@ public class Ad {
         this.description = adsInput.getDescription();
         this.address = adsInput.getAddress();
         this.phone = adsInput.getPhone();
+        this.price = adsInput.getPrice();
     }
 
     public Long getId() {
@@ -122,5 +124,13 @@ public class Ad {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 }

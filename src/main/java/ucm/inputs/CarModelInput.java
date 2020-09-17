@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class CarModelInput {
     private String make;
     private String model;
-    private int year;
+    private String year;
     private int kilometers;
     private int displacement;
     private int hp;

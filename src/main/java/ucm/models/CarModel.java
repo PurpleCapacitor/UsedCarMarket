@@ -30,7 +30,7 @@ public class CarModel {
     public CarModel(CarModelInput input) {
         this.make = input.getMake();
         this.model = input.getModel();
-        this.year = input.getYear();
+        this.year = Integer.parseInt(input.getYear());
         this.kilometers = input.getKilometers();
         this.displacement = input.getDisplacement();
         this.hp = input.getHp();

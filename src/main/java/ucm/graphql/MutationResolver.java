@@ -10,6 +10,9 @@ import ucm.inputs.*;
 import ucm.models.*;
 import ucm.repositories.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class MutationResolver implements GraphQLMutationResolver {
 
@@ -52,13 +55,12 @@ public class MutationResolver implements GraphQLMutationResolver {
 
         Ad newAd = new Ad(adsInput);
         CarModel carModel = new CarModel(carModelInput);
-        User user = new User(userInput);
+        User user = userRepository.findByUsername(userInput.getUsername());
         Extras extras = new Extras(extrasInput);
         Condition condition = new Condition(conditionInput);
         Characteristics characteristics = new Characteristics(characteristicsInput);
         Safety safety = new Safety(safetyInput);
         carModelRepository.save(carModel);
-        userRepository.save(user);
         extrasRepository.save(extras);
         conditionRepository.save(condition);
         characteristicsRepository.save(characteristics);
@@ -70,15 +72,14 @@ public class MutationResolver implements GraphQLMutationResolver {
         newAd.setCondition(condition);
         newAd.setCharacteristics(characteristics);
         newAd.setSafety(safety);
-        carModel.getAds().add(newAd);
-        user.getAds().add(newAd);
-        extras.getAds().add(newAd);
-        condition.getAds().add(newAd);
-        characteristics.getAds().add(newAd);
-        safety.getAds().add(newAd);
         adsRepository.save(newAd);
         return newAd;
 
+    }
+
+    public int deleteAd(Long id) {
+        adsRepository.deleteById( id);
+        return id.intValue();
     }
 
     /*public String uploadImage(Part image, DataFetchingEnvironment environment) throws IOException {
