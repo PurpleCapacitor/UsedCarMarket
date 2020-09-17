@@ -19,13 +19,13 @@
         <input ngModel name="year" type="date" class="form-control mb-2 form-control-sm">
       </div>
       <div class="form-group">
-        <input ngModel name="km" type="text" class="form-control mb-2 form-control-sm" placeholder="Kilometers">
+        <input ngModel name="km" type="number" class="form-control mb-2 form-control-sm" placeholder="Kilometers">
       </div>
       <div class="form-group">
-        <input ngModel name="displacement" type="text" class="form-control mb-2 form-control-sm" placeholder="Displacement">
+        <input ngModel name="displacement" type="number" class="form-control mb-2 form-control-sm" placeholder="Displacement">
       </div>
       <div class="form-group">
-        <input ngModel name="hp" type="text" class="form-control mb-2 form-control-sm" placeholder="Horsepower">
+        <input ngModel name="hp" type="number" class="form-control mb-2 form-control-sm" placeholder="Horsepower">
       </div>
     </div>
     <div class="col-sm">
@@ -67,6 +67,9 @@
         <div class="form-group">
           <input ngModel name="description" type="text" class="form-control mb-2 form-control-sm" placeholder="Ad description">
         </div>
+      <div class="form-group">
+        <input ngModel name="price" type="number" class="form-control mb-2 form-control-sm" placeholder="Price">
+      </div>
     </div>
   </div>
   <div class="row">
@@ -151,7 +154,7 @@
       </div>
       <div class="form-check">
         <label class="form-check-label">
-          <input ngModel name="ESP" type="checkbox" class="form-check-input">ESP
+          <input ngModel name="esp" type="checkbox" class="form-check-input">ESP
         </label>
       </div>
       <div class="form-check">

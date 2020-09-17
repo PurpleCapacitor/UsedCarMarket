@@ -1,4 +1,32 @@
-<p>Your ads here</p>
+<br>
+<div class="container">
+  <table class="table">
+    <thead>
+    <th scope="col">Price</th>
+    <th scope="col">Make</th>
+    <th scope="col">Model</th>
+    <th scope="col">Year</th>
+    <th scope="col">Color</th>
+    <th scope="col"></th>
+    </thead>
+    <tbody class=".table-striped">
+      <tr *ngFor="let ad of ads">
+        <td>{{ad.price}}</td>
+        <td>{{ad.carModel.make}}</td>
+        <td>{{ad.carModel.model}}</td>
+        <td>{{ad.carModel.year}}</td>
+        <td>{{ad.characteristics.color}}</td>
+        <td><button class="btn btn-danger" (click)="deleteAd(ad.id)">Delete</button></td>
 
-<button (click)="newAd()">Post an ad</button>
+      </tr>
+    </tbody>
+  </table>
+  <div class="container">
+    <div class="row">
+      <button class="btn btn-dark" (click)="newAd()">Post an ad</button>
+    </div>
+  </div>
+</div>
+
+
 
