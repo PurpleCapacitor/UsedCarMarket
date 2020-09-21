@@ -17,7 +17,7 @@ public class CarModel {
     private Long id;
     private String make;
     private String model;
-    private int year;
+    private String  year;
     private int kilometers;
     private int displacement;
     private int hp;
@@ -30,7 +30,7 @@ public class CarModel {
     public CarModel(CarModelInput input) {
         this.make = input.getMake();
         this.model = input.getModel();
-        this.year = Integer.parseInt(input.getYear());
+        this.year = input.getYear();
         this.kilometers = input.getKilometers();
         this.displacement = input.getDisplacement();
         this.hp = input.getHp();
@@ -60,11 +60,11 @@ public class CarModel {
         this.model = model;
     }
 
-    public int getYear() {
+    public String getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(String year) {
         this.year = year;
     }
 

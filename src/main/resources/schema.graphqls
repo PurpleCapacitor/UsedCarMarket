@@ -4,7 +4,8 @@ schema {
 }
 
 type Query {
-    ads: [Ads]
+    ads(carModel: CarModelInput,
+        extras: ExtrasInput): [Ads]
     ad(id: Int!): Ads
     userAds(username: String!): [Ads]
 }

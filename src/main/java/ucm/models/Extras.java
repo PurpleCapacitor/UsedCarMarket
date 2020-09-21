@@ -28,6 +28,20 @@ public class Extras {
     public Extras() {
     }
 
+    public Extras(boolean cruiseControl, boolean electricalMirrors, boolean electricalSeats, boolean electricalWindows,
+                  boolean multifunctionalSteeringWheel, boolean bluetooth, boolean ledHeadlights,
+                  boolean heatedSeats, Set<Ad> ads) {
+        this.cruiseControl = cruiseControl;
+        this.electricalMirrors = electricalMirrors;
+        this.electricalSeats = electricalSeats;
+        this.electricalWindows = electricalWindows;
+        this.multifunctionalSteeringWheel = multifunctionalSteeringWheel;
+        this.bluetooth = bluetooth;
+        this.ledHeadlights = ledHeadlights;
+        this.heatedSeats = heatedSeats;
+        this.ads = ads;
+    }
+
     public Extras(ExtrasInput input) {
         this.cruiseControl = input.isCruiseControl();
         this.electricalMirrors = input.isElectricalMirrors();
