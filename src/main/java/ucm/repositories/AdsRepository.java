@@ -1,6 +1,7 @@
 package ucm.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -10,7 +11,7 @@ import ucm.models.User;
 import java.util.List;
 
 @Repository
-public interface AdsRepository extends JpaRepository<Ad, Long> {
+public interface AdsRepository extends JpaRepository<Ad, Long>, JpaSpecificationExecutor<Ad> {
 
     List<Ad> findByUser(User user);
 
@@ -32,4 +33,6 @@ public interface AdsRepository extends JpaRepository<Ad, Long> {
     List<Ad> findByExtras(
             @Param("cc") boolean cc, @Param("em") boolean em, @Param("es") boolean es, @Param("ew") boolean ew,
             @Param("mfsw") boolean mfsw, @Param("bt") boolean bt, @Param("lh") boolean lh, @Param("hs") boolean hs);
+
+    List<Ad> findByPrice(int price);
 }
