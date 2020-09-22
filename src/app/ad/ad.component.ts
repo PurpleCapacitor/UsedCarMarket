@@ -98,6 +98,6 @@ export class AdComponent implements OnInit {
       }
     }).subscribe( ({data}) => {
       this.router.navigate(['/profile']);
-    })
+    });
   }
 }
