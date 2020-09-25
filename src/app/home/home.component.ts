@@ -6,9 +6,12 @@ import {Router} from '@angular/router';
 const searchAds = gql`
   query Ads($carModel: CarModelInput, $extras: ExtrasInput, $price: Int) {
   ads(carModel: $carModel, extras: $extras, price: $price) {
+    id
     price
     carModel {
       make
+      model
+      year
     }
   }
 
@@ -21,6 +24,8 @@ const searchAds = gql`
 })
 export class HomeComponent implements OnInit {
 
+  public results = [];
+
 
   constructor(
     private apollo: Apollo,
@@ -31,6 +36,22 @@ export class HomeComponent implements OnInit {
   }
 
   placeAd(values: any) {
+
+    let make = null;
+    let model = null;
+    let year = null;
+
+    if(values['make'] !== '') {
+      make = values['make'];
+    }
+
+    if(values['model'] !== '') {
+      model = values['model'];
+    }
+
+    if(values['year'] !== '') {
+      year = values['year'].substring(0, 4);
+    }
 
     let extras = {
       cruiseControl: values['cruiseControl'],
@@ -43,9 +64,9 @@ export class HomeComponent implements OnInit {
       heatedSeats: values['heatedSeats']
     };
     let carModel = {
-      make: values['make'],
-      model: values['model'],
-      year: values['year'].substring(0, 4),
+      make: make,
+      model: model,
+      year: year,
       kilometers: Number(values['km'])
     };
 
@@ -56,9 +77,14 @@ export class HomeComponent implements OnInit {
         extras: extras,
         price: Number(values['price'])
       }
-    }).subscribe( ({data}) => {
-      this.router.navigate(['/profile']);
+    }).subscribe(({data}) => {
+      this.results = data['ads'];
     });
+
+  }
+
+  viewAd(id: any) {
+    this.router.navigate(['/ads/' + id]);
 
   }
 }
