@@ -40,17 +40,22 @@ public class QueryResolver implements GraphQLQueryResolver {
                 carModelInput.getYear(), carModelInput.getKilometers());
 
         if (extrasInput != null) {
-            List<Ad> adsExtras = adsRepository.findAll(withCruiseControl(extrasInput.isCruiseControl())
-                    .and(withElectricalMirrors(extrasInput.isElectricalMirrors()))
-                    .and(withElectricalSeats(extrasInput.isElectricalSeats()))
-                    .and(withElectricalWindows(extrasInput.isElectricalWindows()))
-                    .and(withMultifunctionalSteeringWheel(extrasInput.isMultifunctionalSteeringWheel()))
-                    .and(withBluetooth(extrasInput.isBluetooth()))
-                    .and(withHeatedSeats(extrasInput.isHeatedSeats()))
-                    .and(withLedHeadlights(extrasInput.isLedHeadlights())));
-            if (!adsExtras.isEmpty()) {
-                adsCarModels.retainAll(adsExtras);
+            if(extrasInput.isBluetooth() || extrasInput.isCruiseControl() || extrasInput.isElectricalMirrors() ||
+            extrasInput.isElectricalSeats() || extrasInput.isElectricalWindows() || extrasInput.isHeatedSeats() ||
+            extrasInput.isLedHeadlights() || extrasInput.isMultifunctionalSteeringWheel()) {
+                List<Ad> adsExtras = adsRepository.findAll(withCruiseControl(extrasInput.isCruiseControl())
+                        .and(withElectricalMirrors(extrasInput.isElectricalMirrors()))
+                        .and(withElectricalSeats(extrasInput.isElectricalSeats()))
+                        .and(withElectricalWindows(extrasInput.isElectricalWindows()))
+                        .and(withMultifunctionalSteeringWheel(extrasInput.isMultifunctionalSteeringWheel()))
+                        .and(withBluetooth(extrasInput.isBluetooth()))
+                        .and(withHeatedSeats(extrasInput.isHeatedSeats()))
+                        .and(withLedHeadlights(extrasInput.isLedHeadlights())));
+                if (!adsExtras.isEmpty()) {
+                    adsCarModels.retainAll(adsExtras);
+                }
             }
+
         }
 
         if (price != 0) {

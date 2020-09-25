@@ -17,7 +17,7 @@ public class CarModel {
     private Long id;
     private String make;
     private String model;
-    private String  year;
+    private String year;
     private int kilometers;
     private int displacement;
     private int hp;
