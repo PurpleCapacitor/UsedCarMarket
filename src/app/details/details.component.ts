@@ -28,7 +28,7 @@ const ad = gql`
 })
 export class DetailsComponent implements OnInit {
 
-  public result = <any> {};
+  public result: any;
 
   constructor(private activatedRoute: ActivatedRoute, private apollo: Apollo) {
   }

@@ -1,1 +1,72 @@
-<p>admin works!</p>
+<br>
+<div class="container" *ngIf="results.length != 0">
+  <h3>Unapproved Ads</h3>
+  <table class="table">
+    <thead>
+    <th scope="col">Price</th>
+    <th scope="col">Username</th>
+    <th scope="col">Description</th>
+    <th scope="col"></th>
+    </thead>
+    <tbody class=".table-striped">
+    <tr *ngFor="let result of results">
+      <td>{{result.price}}</td>
+      <td>{{result.user.username}}</td>
+      <td>{{result.description}}</td>
+      <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#approveModal"
+                  (click)="viewAd(result.id)">View</button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<br>
+
+
+<div class="modal fade" id="approveModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalLabel">Review ad</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container>" *ngIf="ad !== undefined">
+          <div class="row">
+            <div class="col-sm">
+              Price: {{ad.price}}
+              <br>
+              Seller's address: {{ad.address}}
+              <br>
+              Seller's phone: {{ad.phone}}
+              <br>
+              {{ad.description}}
+              <br>
+            </div>
+            <div class="col-sm">
+              Make: {{ad.carModel.make}}
+              <br>
+              Model: {{ad.carModel.model}}
+              <br>
+              Year: {{ad.carModel.year}}
+              <br>
+              Kilometers: {{ad.carModel.Kilometers}}
+              <br>
+              Displacement: {{ad.carModel.displacement}}
+              <br>
+              Horsepower: {{ad.carModel.hp}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="approve(ad.id)">Approve</button>
+        <button type="button" class="btn btn-danger" (click)="disapprove(ad.id)">Disapprove</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close dialog</button>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -9,7 +9,7 @@ import {AuthenticationService} from './services/authentication.service';
 })
 export class AppComponent implements OnInit {
   title = 'ucmfront';
-  private user = null;
+  public user = JSON.parse(localStorage.getItem('currentUser'));;
   public userLoggedIn = false;
 
   constructor(private apollo: Apollo,
