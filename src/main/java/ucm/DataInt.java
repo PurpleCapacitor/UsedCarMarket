@@ -72,6 +72,7 @@ public class DataInt implements CommandLineRunner {
             user.getAds().add(ad);
             ad.setCharacteristics(characteristics);
             ad.setExtras(extras3);
+            ad.setApproved(true);
             adsRepository.save(ad);
 
             CarModel carModel2 = new CarModel();
@@ -105,6 +106,7 @@ public class DataInt implements CommandLineRunner {
             ad2.setPhone("06542325");
             ad2.setAddress("Ep 7");
             ad2.setPrice(9000);
+            ad2.setApproved(true);
             ad2.setCarModel(carModel2);
             ad2.setUser(user);
             ad2.setCharacteristics(characteristics2);
@@ -122,6 +124,7 @@ public class DataInt implements CommandLineRunner {
             ad3.setUser(user);
             ad3.setCharacteristics(characteristics2);
             ad3.setExtras(extras2);
+            ad3.setApproved(true);
             adsRepository.save(ad3);
         }
 

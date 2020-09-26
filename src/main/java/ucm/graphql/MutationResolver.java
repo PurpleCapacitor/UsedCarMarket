@@ -78,7 +78,14 @@ public class MutationResolver implements GraphQLMutationResolver {
     }
 
     public int deleteAd(Long id) {
-        adsRepository.deleteById( id);
+        adsRepository.deleteById(id);
+        return id.intValue();
+    }
+
+    public int approveAd(Long id) {
+        Ad ad = adsRepository.findById(id).get();
+        ad.setApproved(true);
+        adsRepository.save(ad);
         return id.intValue();
     }
 

@@ -40,9 +40,9 @@ public class QueryResolver implements GraphQLQueryResolver {
                 carModelInput.getYear(), carModelInput.getKilometers());
 
         if (extrasInput != null) {
-            if(extrasInput.isBluetooth() || extrasInput.isCruiseControl() || extrasInput.isElectricalMirrors() ||
-            extrasInput.isElectricalSeats() || extrasInput.isElectricalWindows() || extrasInput.isHeatedSeats() ||
-            extrasInput.isLedHeadlights() || extrasInput.isMultifunctionalSteeringWheel()) {
+            if (extrasInput.isBluetooth() || extrasInput.isCruiseControl() || extrasInput.isElectricalMirrors() ||
+                    extrasInput.isElectricalSeats() || extrasInput.isElectricalWindows() || extrasInput.isHeatedSeats() ||
+                    extrasInput.isLedHeadlights() || extrasInput.isMultifunctionalSteeringWheel()) {
                 List<Ad> adsExtras = adsRepository.findAll(withCruiseControl(extrasInput.isCruiseControl())
                         .and(withElectricalMirrors(extrasInput.isElectricalMirrors()))
                         .and(withElectricalSeats(extrasInput.isElectricalSeats()))
@@ -50,12 +50,12 @@ public class QueryResolver implements GraphQLQueryResolver {
                         .and(withMultifunctionalSteeringWheel(extrasInput.isMultifunctionalSteeringWheel()))
                         .and(withBluetooth(extrasInput.isBluetooth()))
                         .and(withHeatedSeats(extrasInput.isHeatedSeats()))
-                        .and(withLedHeadlights(extrasInput.isLedHeadlights())));
+                        .and(withLedHeadlights(extrasInput.isLedHeadlights()))
+                        .and(approved()));
                 if (!adsExtras.isEmpty()) {
                     adsCarModels.retainAll(adsExtras);
                 }
             }
-
         }
 
         if (price != 0) {
@@ -72,5 +72,10 @@ public class QueryResolver implements GraphQLQueryResolver {
     public List<Ad> getUserAds(String username) {
         User user = userRepository.findByUsername(username);
         return adsRepository.findByUser(user);
+    }
+
+    public List<Ad> getUnapprovedAds() {
+        List<Ad> ads = adsRepository.findByApprovedFalse();
+        return ads;
     }
 }

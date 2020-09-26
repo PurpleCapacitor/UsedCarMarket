@@ -9,9 +9,24 @@ import javax.persistence.criteria.*;
 
 public class AdSpecification {
 
+    public static Specification<Ad> approved() {
+        return new Specification<Ad>() {
+            @Override
+            public Predicate toPredicate(Root<Ad> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                return criteriaBuilder.equal(root.get("approved"), true);
+            }
+        };
+
+    }
+
     public static Specification<Ad> withCruiseControl(boolean cc) {
         if (!cc) {
-            return null;
+            return new Specification<Ad>() {
+                @Override
+                public Predicate toPredicate(Root<Ad> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                    return null;
+                }
+            };
         } else {
             return new Specification<Ad>() {
                 @Override
@@ -25,7 +40,12 @@ public class AdSpecification {
 
     public static Specification<Ad> withElectricalMirrors(boolean electricalMirrors) {
         if (!electricalMirrors)
-            return null;
+            return new Specification<Ad>() {
+                @Override
+                public Predicate toPredicate(Root<Ad> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                    return null;
+                }
+            };
         else return new Specification<Ad>() {
             @Override
             public Predicate toPredicate(Root<Ad> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
@@ -36,7 +56,12 @@ public class AdSpecification {
 
     public static Specification<Ad> withElectricalSeats(boolean electricalSeats) {
         if (!electricalSeats)
-            return null;
+            return new Specification<Ad>() {
+                @Override
+                public Predicate toPredicate(Root<Ad> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                    return null;
+                }
+            };
         else return new Specification<Ad>() {
             @Override
             public Predicate toPredicate(Root<Ad> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
@@ -47,7 +72,12 @@ public class AdSpecification {
 
     public static Specification<Ad> withElectricalWindows(boolean electricalWindows) {
         if (!electricalWindows)
-            return null;
+            return new Specification<Ad>() {
+                @Override
+                public Predicate toPredicate(Root<Ad> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                    return null;
+                }
+            };
         else return new Specification<Ad>() {
             @Override
             public Predicate toPredicate(Root<Ad> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
@@ -58,7 +88,12 @@ public class AdSpecification {
 
     public static Specification<Ad> withMultifunctionalSteeringWheel(boolean multifunctionalSteeringWheel) {
         if (!multifunctionalSteeringWheel)
-            return null;
+            return new Specification<Ad>() {
+                @Override
+                public Predicate toPredicate(Root<Ad> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                    return null;
+                }
+            };
         else return new Specification<Ad>() {
             @Override
             public Predicate toPredicate(Root<Ad> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
@@ -69,7 +104,12 @@ public class AdSpecification {
 
     public static Specification<Ad> withBluetooth(boolean bluetooth) {
         if (!bluetooth)
-            return null;
+            return new Specification<Ad>() {
+                @Override
+                public Predicate toPredicate(Root<Ad> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                    return null;
+                }
+            };
         else return new Specification<Ad>() {
             @Override
             public Predicate toPredicate(Root<Ad> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
@@ -80,7 +120,12 @@ public class AdSpecification {
 
     public static Specification<Ad> withLedHeadlights(boolean lh) {
         if (!lh)
-            return null;
+            return new Specification<Ad>() {
+                @Override
+                public Predicate toPredicate(Root<Ad> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                    return null;
+                }
+            };
         else
             return new Specification<Ad>() {
                 @Override
@@ -93,7 +138,12 @@ public class AdSpecification {
 
     public static Specification<Ad> withHeatedSeats(boolean heatedSeats) {
         if (!heatedSeats)
-            return null;
+            return new Specification<Ad>() {
+                @Override
+                public Predicate toPredicate(Root<Ad> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                    return null;
+                }
+            };
         else return new Specification<Ad>() {
             @Override
             public Predicate toPredicate(Root<Ad> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {

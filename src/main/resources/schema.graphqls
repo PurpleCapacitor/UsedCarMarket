@@ -8,6 +8,7 @@ type Query {
         extras: ExtrasInput,
         price: Int): [Ads]
     ad(id: Int!): Ads
+    unapprovedAds: [Ads]
     userAds(username: String!): [Ads]
 }
 
@@ -22,6 +23,7 @@ type Mutation {
             characteristics: CharacteristicsInput
             safety: SafetyInput): Ads
     deleteAd(id: Int!): Int
+    approveAd(id: Int!): Int
 
 }
 

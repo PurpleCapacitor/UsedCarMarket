@@ -16,7 +16,7 @@ public interface AdsRepository extends JpaRepository<Ad, Long>, JpaSpecification
     List<Ad> findByUser(User user);
 
     @Query("select ad from Ad ad inner join CarModel c on ad.carModel.id = c.id" +
-            " where (:make is null or c.make = :make)" +
+            " where ad.approved = true and (:make is null or c.make = :make)" +
             " and (:model is null or c.model = :model) and (:year is null or c.year = :year)" +
             " and (:kilometers = 0 or c.kilometers = :kilometers)")
     List<Ad> findByCarModelMake(@Param("make") String make,
@@ -34,5 +34,8 @@ public interface AdsRepository extends JpaRepository<Ad, Long>, JpaSpecification
             @Param("cc") boolean cc, @Param("em") boolean em, @Param("es") boolean es, @Param("ew") boolean ew,
             @Param("mfsw") boolean mfsw, @Param("bt") boolean bt, @Param("lh") boolean lh, @Param("hs") boolean hs);
 
-    List<Ad> findByPrice(int price);
+    @Query("select ad from Ad ad where ad.approved = true and ad.price = :price")
+    List<Ad> findByPrice(@Param("price") int price);
+
+    List<Ad> findByApprovedFalse();
 }

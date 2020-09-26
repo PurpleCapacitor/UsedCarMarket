@@ -15,6 +15,7 @@ public class Ad {
     private String address;
     private String phone;
     private int price;
+    private boolean approved;
 
     @ManyToOne
     @JoinColumn(name = "car_model_id")
@@ -44,6 +45,14 @@ public class Ad {
         this.address = adsInput.getAddress();
         this.phone = adsInput.getPhone();
         this.price = adsInput.getPrice();
+    }
+
+    public boolean isApproved() {
+        return approved;
+    }
+
+    public void setApproved(boolean approved) {
+        this.approved = approved;
     }
 
     public Long getId() {
