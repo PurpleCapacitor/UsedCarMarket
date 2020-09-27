@@ -1,7 +1,8 @@
 <br>
 <div class="container>" *ngIf="result != undefined">
   <div class="row">
-    <div class="col-sm">
+    <div class="col-2 mx-auto">
+      <h3>Ad info</h3>
       Price: {{result.price}}
       <br>
       Seller's address: {{result.address}}
@@ -11,18 +12,129 @@
       {{result.description}}
       <br>
     </div>
-    <div class="col-sm">
+    <div class="col-2 mx-auto">
+      <h5>Car model</h5>
       Make: {{result.carModel.make}}
       <br>
       Model: {{result.carModel.model}}
       <br>
       Year: {{result.carModel.year}}
       <br>
-      Kilometers: {{result.carModel.Kilometers}}
+      Kilometers: {{result.carModel.kilometers}}
       <br>
       Displacement: {{result.carModel.displacement}}
       <br>
       Horsepower: {{result.carModel.hp}}
+    </div>
+    <div class="col-2 mx-auto">
+      <h5>Characteristics</h5>
+      Emission class: {{result.characteristics.emissionClass}}
+      <br>
+      AC:
+      <ng-container *ngIf="result.characteristics.ac;then contains else without"></ng-container>
+      <ng-template #contains>Yes</ng-template>
+      <ng-template #without>No</ng-template>
+      <br>
+      Drivetrain: {{result.characteristics.drivetrain}}
+      <br>
+      Color: {{result.characteristics.color}}
+      <br>
+      Registered until: {{result.characteristics.registeredUntil}}
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-2 mx-auto">
+      <h5>Condition</h5>
+      First owner:
+      <ng-container *ngIf="result.condition.firstOwner;then contains else without"></ng-container>
+      <ng-template #contains>Yes</ng-template>
+      <ng-template #without>No</ng-template>
+      <br>
+      Service history:
+      <ng-container *ngIf="result.condition.serviceHistory;then contains else without"></ng-container>
+      <ng-template #contains>Yes</ng-template>
+      <ng-template #without>No</ng-template>
+      <br>
+      Spare key:
+      <ng-container *ngIf="result.condition.spareKey;then contains else without"></ng-container>
+      <ng-template #contains>Yes</ng-template>
+      <ng-template #without>No</ng-template>
+      <br>
+      Taxi:
+      <ng-container *ngIf="result.condition.taxi;then contains else without"></ng-container>
+      <ng-template #contains>Yes</ng-template>
+      <ng-template #without>No</ng-template>
+    </div>
+    <div class="col-2 mx-auto">
+      <h5>Extras</h5>
+      Cruise control:
+      <ng-container *ngIf="result.extras.cruiseControl;then contains else without"></ng-container>
+      <ng-template #contains>Yes</ng-template>
+      <ng-template #without>No</ng-template>
+      <br>
+      Electrical mirrors:
+      <ng-container *ngIf="result.condition.electricalMirrors;then contains else without"></ng-container>
+      <ng-template #contains>Yes</ng-template>
+      <ng-template #without>No</ng-template>
+      <br>
+      Electrical seats:
+      <ng-container *ngIf="result.condition.electricalSeats;then contains else without"></ng-container>
+      <ng-template #contains>Yes</ng-template>
+      <ng-template #without>No</ng-template>
+      <br>
+      Electrical windows:
+      <ng-container *ngIf="result.condition.electricalWindows;then contains else without"></ng-container>
+      <ng-template #contains>Yes</ng-template>
+      <ng-template #without>No</ng-template>
+      <br>
+      MF steering wheel:
+      <ng-container *ngIf="result.condition.multifunctionalSteeringWheel;then contains else without"></ng-container>
+      <ng-template #contains>Yes</ng-template>
+      <ng-template #without>No</ng-template>
+      <br>
+      Bluetooth:
+      <ng-container *ngIf="result.condition.bluetooth;then contains else without"></ng-container>
+      <ng-template #contains>Yes</ng-template>
+      <ng-template #without>No</ng-template>
+      <br>
+      LED headlights:
+      <ng-container *ngIf="result.condition.ledHeadlights;then contains else without"></ng-container>
+      <ng-template #contains>Yes</ng-template>
+      <ng-template #without>No</ng-template>
+      <br>
+      Heated seats:
+      <ng-container *ngIf="result.condition.heatedSeats;then contains else without"></ng-container>
+      <ng-template #contains>Yes</ng-template>
+      <ng-template #without>No</ng-template>
+      <br>
+    </div>
+    <div class="col-2 mx-auto">
+      <h5>Safety</h5>
+      ABS:
+      <ng-container *ngIf="result.safety.ABS;then contains else without"></ng-container>
+      <ng-template #contains>Yes</ng-template>
+      <ng-template #without>No</ng-template>
+      <br>
+      ESP:
+      <ng-container *ngIf="result.safety.ESP;then contains else without"></ng-container>
+      <ng-template #contains>Yes</ng-template>
+      <ng-template #without>No</ng-template>
+      <br>
+      Airbags:
+      <ng-container *ngIf="result.safety.airbags;then contains else without"></ng-container>
+      <ng-template #contains>Yes</ng-template>
+      <ng-template #without>No</ng-template>
+      <br>
+      Central locking:
+      <ng-container *ngIf="result.safety.centralLocking;then contains else without"></ng-container>
+      <ng-template #contains>Yes</ng-template>
+      <ng-template #without>No</ng-template>
+      <br>
+      Child lock:
+      <ng-container *ngIf="result.safety.childLock;then contains else without"></ng-container>
+      <ng-template #contains>Yes</ng-template>
+      <ng-template #without>No</ng-template>
     </div>
   </div>
 </div>

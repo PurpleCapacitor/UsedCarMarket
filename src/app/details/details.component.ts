@@ -17,6 +17,36 @@ const ad = gql`
             kilometers
             hp
           }
+          extras {
+            cruiseControl
+            electricalMirrors
+            electricalSeats
+            electricalWindows
+            multifunctionalSteeringWheel
+            bluetooth
+            ledHeadlights
+            heatedSeats
+          }
+          condition {
+            firstOwner
+            serviceHistory
+            spareKey
+            taxi
+          }
+          characteristics {
+            emissionClass
+            ac
+            drivetrain
+            color
+            registeredUntil
+          }
+          safety {
+            ABS
+            ESP
+            airbags
+            centralLocking
+            childLock
+          }
         }
     }
 `

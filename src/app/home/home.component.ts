@@ -14,7 +14,6 @@ const searchAds = gql`
       year
     }
   }
-
 }`
 
 @Component({
