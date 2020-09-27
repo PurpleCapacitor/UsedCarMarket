@@ -34,7 +34,7 @@ export class RegistrationComponent implements OnInit {
       }
     }).subscribe(({data}) => {
       // @ts-ignore
-      alert("Thank you for registering " + data.userRegistration.username);
+      alert("Thank you for registering " + data.userRegistration);
       this.router.navigate(['/login']);
     }, error => {
       alert(error);
