@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Apollo, gql} from 'apollo-angular';
 import {Router} from '@angular/router';
 import {ConsoleLogger} from '@angular/compiler-cli/ngcc';
+import {HttpClient} from '@angular/common/http';
 
 
 const placeAd = gql`
@@ -26,10 +27,14 @@ const placeAd = gql`
 export class AdComponent implements OnInit {
 
   private user = JSON.parse(localStorage.getItem('currentUser'));
+  selectedFile: File;
+  private imageId: any;
+
 
   constructor(
     private apollo: Apollo,
-    private router: Router
+    private router: Router,
+    private httpClient: HttpClient
   ) {
   }
 
@@ -41,7 +46,8 @@ export class AdComponent implements OnInit {
       description: values['description'],
       address: values['address'],
       phone: values['phone'],
-      price: values['price']
+      price: Number(values['price']),
+      imageId: this.imageId
     };
     let user = {
       username: this.user.username
@@ -60,9 +66,9 @@ export class AdComponent implements OnInit {
       make: values['make'],
       model: values['model'],
       year: values['year'].substring(0, 4),
-      kilometers: values['km'],
-      displacement: values['displacement'],
-      hp: values['hp']
+      kilometers: Number(values['km']),
+      displacement: Number(values['displacement']),
+      hp: Number(values['hp'])
     };
     let condition = {
       firstOwner: values['firstOwner'],
@@ -99,5 +105,17 @@ export class AdComponent implements OnInit {
     }).subscribe( ({data}) => {
       this.router.navigate(['/profile']);
     });
+  }
+
+  onFileChanged(event) {
+    this.selectedFile = event.target.files[0];
+    console.log(this.selectedFile);
+    const uploadImageData = new FormData();
+    uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
+    this.httpClient.post('http://localhost:8080/image/upload', uploadImageData)
+      .subscribe((response) => {
+            this.imageId = response["id"];
+        }
+      );
   }
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Apollo, gql} from 'apollo-angular';
+import {HttpClient} from '@angular/common/http';
+import {DomSanitizer} from '@angular/platform-browser';
 
 const ad = gql`
     query Ad($id: Int!) {
@@ -9,6 +11,9 @@ const ad = gql`
           address
           phone
           price
+          image {
+            name
+          }
           carModel {
             make
             model
@@ -59,8 +64,13 @@ const ad = gql`
 export class DetailsComponent implements OnInit {
 
   public result: any;
+  public imageSrc: any;
+  private readonly imageType : string = 'data:image/PNG;base64,';
 
-  constructor(private activatedRoute: ActivatedRoute, private apollo: Apollo) {
+  constructor(private activatedRoute: ActivatedRoute,
+              private apollo: Apollo,
+              private httpClient: HttpClient,
+              private sanitization:DomSanitizer) {
   }
 
   ngOnInit(): void {
@@ -71,6 +81,12 @@ export class DetailsComponent implements OnInit {
       }
     }).subscribe(({data}) => {
       this.result = data["ad"];
+      this.httpClient.get('http://localhost:8080/image/' + this.result.image.name)
+        .subscribe(
+          res => {
+            this.imageSrc = this.sanitization.bypassSecurityTrustUrl(this.imageType + res["content"]);
+          }
+        );
     });
   }
 

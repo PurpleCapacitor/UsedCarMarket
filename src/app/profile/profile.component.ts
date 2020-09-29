@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {Apollo, gql} from 'apollo-angular';
+import {AuthenticationService} from '../services/authentication.service';
 
 const userAds = gql`
     query UserAds($username: String!) {
@@ -41,7 +42,7 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-   this.fetchData()
+    this.fetchData()
   }
 
   newAd() {

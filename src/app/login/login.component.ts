@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {AuthenticationService} from '../services/authentication.service';
 import {Apollo, gql} from 'apollo-angular';
 import {Router} from '@angular/router';
+import {AppComponent} from '../app.component';
 
 const userLogin = gql`
   mutation UserLogin($username: String!, $password: String!) {
@@ -47,7 +48,7 @@ export class LoginComponent implements OnInit {
         // @ts-ignore
         this.user = data.userLogin;
         localStorage.setItem("currentUser", JSON.stringify(this.user));
-        this.authenticationService.login().subscribe(loggedIn => this.loggedIn = loggedIn);
+        this.authenticationService.loggedIn.next(true);
         if(this.user.type === 'ADMIN') {
           this.router.navigate(['/admin']);
         } else {

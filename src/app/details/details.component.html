@@ -1,7 +1,12 @@
 <br>
 <div class="container>" *ngIf="result != undefined">
   <div class="row">
-    <div class="col-2 mx-auto">
+    <div class="col-3 mx-auto">
+      <div *ngIf=imageSrc>
+        <img [src]="imageSrc" style="max-height: 500px; max-width: 500px">
+      </div>
+    </div>
+    <div class="col-3 mx-auto">
       <h3>Ad info</h3>
       Price: {{result.price}}
       <br>
@@ -12,7 +17,7 @@
       {{result.description}}
       <br>
     </div>
-    <div class="col-2 mx-auto">
+    <div class="col-3 mx-auto">
       <h5>Car model</h5>
       Make: {{result.carModel.make}}
       <br>
@@ -26,6 +31,9 @@
       <br>
       Horsepower: {{result.carModel.hp}}
     </div>
+  </div>
+  <br>
+  <div class="row">
     <div class="col-2 mx-auto">
       <h5>Characteristics</h5>
       Emission class: {{result.characteristics.emissionClass}}
@@ -41,9 +49,8 @@
       <br>
       Registered until: {{result.characteristics.registeredUntil}}
     </div>
-  </div>
+
   <br>
-  <div class="row">
     <div class="col-2 mx-auto">
       <h5>Condition</h5>
       First owner:

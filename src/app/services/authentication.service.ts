@@ -7,15 +7,13 @@ import {rewriteURIForGET} from '@apollo/client';
 })
 export class AuthenticationService {
 
-  public loggedIn = new Subject();
+  public loggedIn = new Subject<boolean>();
 
-  login(): Observable<boolean> {
+  login() {
     if(localStorage.getItem("currentUser") !== null) {
       this.loggedIn.next(true);
-      return of(true);
     } else {
       this.loggedIn.next(false);
-      return of(false);
     }
   }
 
