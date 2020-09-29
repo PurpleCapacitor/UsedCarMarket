@@ -35,6 +35,8 @@ public class Ad {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+    @OneToOne
+    private AdImage image;
 
     public Ad() {
 
@@ -141,5 +143,13 @@ public class Ad {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public AdImage getImage() {
+        return image;
+    }
+
+    public void setImage(AdImage image) {
+        this.image = image;
     }
 }

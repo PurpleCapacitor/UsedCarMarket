@@ -39,6 +39,12 @@ type Ads {
     condition: Condition
     characteristics: Characteristics
     safety: Safety
+    image: Image
+}
+
+type Image {
+    id: Int!
+    name: String
 }
 
 type User {
@@ -101,6 +107,7 @@ input AdsInput {
     address: String
     phone: String
     price: Int
+    imageId: Int
 }
 
 input CarModelInput {

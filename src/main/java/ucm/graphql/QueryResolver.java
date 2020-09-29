@@ -2,19 +2,16 @@ package ucm.graphql;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import ucm.inputs.CarModelInput;
 import ucm.inputs.ExtrasInput;
 import ucm.models.Ad;
-import ucm.models.Extras;
 import ucm.models.User;
 import ucm.repositories.*;
-import ucm.specifications.AdSpecification;
-import ucm.specifications.AdSpecification.*;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static ucm.specifications.AdSpecification.*;
@@ -71,7 +68,14 @@ public class QueryResolver implements GraphQLQueryResolver {
 
     public List<Ad> getUserAds(String username) {
         User user = userRepository.findByUsername(username);
-        return adsRepository.findByUser(user);
+        List<Ad> ads = adsRepository.findByUser(user);
+        List<Ad> approved = new ArrayList<>();
+        for (Ad ad : ads) {
+            if (ad.isApproved()) {
+                approved.add(ad);
+            }
+        }
+        return approved;
     }
 
     public List<Ad> getUnapprovedAds() {

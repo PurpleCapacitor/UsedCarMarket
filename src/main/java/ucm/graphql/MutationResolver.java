@@ -32,6 +32,8 @@ public class MutationResolver implements GraphQLMutationResolver {
     private ExtrasRepository extrasRepository;
     @Autowired
     private SafetyRepository safetyRepository;
+    @Autowired
+    private AdImageRepository adImageRepository;
 
     public User userLogin(String username, String password) {
         User user = userRepository.findByUsernameAndPassword(username, password);
@@ -58,6 +60,7 @@ public class MutationResolver implements GraphQLMutationResolver {
         Condition condition = new Condition(conditionInput);
         Characteristics characteristics = new Characteristics(characteristicsInput);
         Safety safety = new Safety(safetyInput);
+        AdImage image = adImageRepository.findById(adsInput.getImageId()).get();
         carModelRepository.save(carModel);
         extrasRepository.save(extras);
         conditionRepository.save(condition);
@@ -70,6 +73,7 @@ public class MutationResolver implements GraphQLMutationResolver {
         newAd.setCondition(condition);
         newAd.setCharacteristics(characteristics);
         newAd.setSafety(safety);
+        newAd.setImage(image);
         adsRepository.save(newAd);
         return newAd;
 

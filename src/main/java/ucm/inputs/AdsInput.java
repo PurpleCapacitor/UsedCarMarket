@@ -12,6 +12,7 @@ public class AdsInput {
     private String address;
     private String phone;
     private int price;
+    private Long imageId;
     /*private CarModelInput carModelInput;
     private UserInput userInput;
     private ExtrasInput extrasInput;
